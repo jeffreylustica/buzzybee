@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 /* Firefox */
-* {
+/* * {
   scrollbar-width: none;
-}
+} */
 
 /* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   width: 0px;
-}
+} */

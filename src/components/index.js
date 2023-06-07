@@ -7,3 +7,4 @@ export { default as Chat } from "./Chat";
 export { default as Rooms } from "./Rooms";
 export { default as Messages } from "./Messages";
 export { default as TypeBox } from "./TypeBox";
+export { default as MessageBubble } from "./MessageBubble";

@@ -1,8 +1,13 @@
 import { ProfileImage, Search, Chat } from "./index";
 
-const ChatsList = () => {
+const ChatsList = ({ isActive }) => {
   return (
-    <div className="min-w-[320px] max-w-[30%] h-full bg-gold rounded-tr-3xl p-4 flex flex-col">
+    // <div className="min-w-[320px] max-w-[30vw] h-full bg-gold rounded-tr-3xl p-4 flex flex-col">
+    <div
+      className={`absolute sm:relative ${
+        isActive ? "-translate-x-full sm:-translate-x-0" : "-translate-x-0"
+      } sm:min-w-[320px] sm:max-w-[30vw] transition-all w-full h-full bg-gold rounded-tr-3xl p-4 flex flex-col`}
+    >
       <div className="flex items-center mb-8">
         <div className="w-12 h-12 mr-auto">
           <ProfileImage />
@@ -12,7 +17,7 @@ const ChatsList = () => {
         </h1>
       </div>
       <Search />
-      <div className="flex-grow overflow-auto">
+      <div className="grow overflow-auto pr-1">
         <Chat />
         <Chat />
         <Chat />
