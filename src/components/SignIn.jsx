@@ -13,7 +13,7 @@ const SignIn = () => {
       await signInWithGoogle();
       navigate("/account");
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
   return (
@@ -23,7 +23,7 @@ const SignIn = () => {
       <button
         onClick={() => signIn()}
         type="button"
-        className="flex items-center justify-self-end space-x-4 rounded-sm py-2 px-6 mt-auto mb-16 bg-gray-100 shadow-md shadow-gray-300  hover:bg-gray-200 hover:shadow-gray-400"
+        className="flex items-center justify-self-end space-x-4 rounded-sm py-2 px-6 mt-auto mb-16 bg-gray-100 shadow-md shadow-gray-300 transition-all hover:-translate-y-2 hover:bg-yellow-300 hover:shadow-gray-400"
       >
         <FcGoogle /> <span>Sign in with Google</span>
       </button>

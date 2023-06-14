@@ -7,7 +7,7 @@ const Rooms = ({ setIsActive }) => {
       <div className="flex items-center pb-4 mb-2">
         <button
           type="button"
-          className="mr-auto rounded-full hover:bg-gray-100 transition-all md:scale-0"
+          className="mr-auto rounded-full hover:bg-gray-100 transition-all sm:scale-0"
           onClick={() => setIsActive(false)}
         >
           <HiOutlineChevronLeft className="w-8 h-8" />
