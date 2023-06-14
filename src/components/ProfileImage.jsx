@@ -1,9 +1,9 @@
 import reactLogo from "../assets/reactLogo.svg";
 
-const ProfileImage = () => {
+const ProfileImage = ({ user }) => {
   return (
     <img
-      src={reactLogo}
+      src={user?.photoURL}
       alt="user"
       className={`border-2 w-full h-full rounded-full`}
     />

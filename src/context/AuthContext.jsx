@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
   const signOutAcct = () => {
     return signOut(auth);
   };
-  console.log(user);
+
   return (
     <UserContext.Provider value={{ user, signInWithGoogle, signOutAcct }}>
       {children}

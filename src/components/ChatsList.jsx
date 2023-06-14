@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ProfileImage, Search, Chat, DropdownMenu } from "./index";
 
-const ChatsList = ({ isActive }) => {
+const ChatsList = ({ isActive, user, signOutAcct }) => {
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
   const handleToggle = () => {
@@ -19,14 +19,14 @@ const ChatsList = ({ isActive }) => {
           className="w-12 h-12 mr-auto cursor-pointer"
           onClick={handleToggle}
         >
-          <ProfileImage />
+          <ProfileImage user={user} />
         </div>
         <div
           className={`z-10 absolute -bottom-32 transition-all duration-300 origin-top-left ${
             dropdownToggle ? "scale-1 opacity-1" : "scale-0 opacity-0"
           }`}
         >
-          <DropdownMenu />
+          <DropdownMenu user={user} signOutAcct={signOutAcct} />
         </div>
         <h1 className="mr-auto -translate-x-1/2 text-gold-900 font-bold text-xl">
           Chats

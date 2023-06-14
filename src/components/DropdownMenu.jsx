@@ -1,8 +1,6 @@
 import { HiOutlineLogout } from "react-icons/hi";
-import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-const DropdownMenu = () => {
-  const { signOutAcct } = UserAuth();
+const DropdownMenu = ({ user, signOutAcct }) => {
   const navigate = useNavigate();
 
   const handleSignout = async () => {
@@ -15,10 +13,10 @@ const DropdownMenu = () => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-sm divide-y-2 divide-solid divide-gray-200 border-solid border-2">
+    <div className="min-w-[250px] bg-gray-100 rounded-sm divide-y-2 divide-solid divide-gray-200 border-solid border-2">
       <div className="px-4 py-2">
         <span>Signed in as</span>
-        <div>jefflustica@gmail.com</div>
+        <div>{user?.displayName}</div>
       </div>
       <div className="py-2">
         <button
