@@ -29,7 +29,7 @@ const SignIn = () => {
       await setDoc(doc(collection(db, "users")), {
         uid: userAdditionalInfo.user.uid,
         displayName: userAdditionalInfo.user.displayName,
-        photoUrl: userAdditionalInfo.user.photoURL,
+        photoURL: userAdditionalInfo.user.photoURL,
       });
     } catch (error) {
       console.error(error);

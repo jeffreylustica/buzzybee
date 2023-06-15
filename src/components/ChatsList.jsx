@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { ProfileImage, Search, Chat, DropdownMenu } from "./index";
 
-const ChatsList = ({ isActive, user, signOutAcct }) => {
+const ChatsList = ({
+  isActive,
+  user,
+  signOutAcct,
+  searchUsers,
+  filteredUsers,
+}) => {
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
   const handleToggle = () => {
@@ -32,8 +38,12 @@ const ChatsList = ({ isActive, user, signOutAcct }) => {
           Chats
         </h1>
       </div>
-      <Search />
+      <Search searchUsers={searchUsers} />
       <div className="grow overflow-auto pr-1">
+        {filteredUsers.map((user) => (
+          <Chat key={user.uid} user={user} />
+        ))}
+        {/* <Chat />
         <Chat />
         <Chat />
         <Chat />
@@ -46,9 +56,7 @@ const ChatsList = ({ isActive, user, signOutAcct }) => {
         <Chat />
         <Chat />
         <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
+        <Chat /> */}
       </div>
     </div>
   );

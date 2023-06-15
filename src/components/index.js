@@ -9,3 +9,4 @@ export { default as Messages } from "./Messages";
 export { default as TypeBox } from "./TypeBox";
 export { default as MessageBubble } from "./MessageBubble";
 export { default as DropdownMenu } from "./DropdownMenu";
+export { default as ProtectedRoute } from "./ProtectedRoute";
