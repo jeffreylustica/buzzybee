@@ -1,5 +1,3 @@
-import reactLogo from "../assets/reactLogo.svg";
-
 const ProfileImage = ({ user }) => {
   return (
     <img

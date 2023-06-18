@@ -7,6 +7,8 @@ const ChatsList = ({
   signOutAcct,
   searchUsers,
   filteredUsers,
+  handleSelectUser,
+  userChats,
 }) => {
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
@@ -41,22 +43,20 @@ const ChatsList = ({
       <Search searchUsers={searchUsers} />
       <div className="grow overflow-auto pr-1">
         {filteredUsers.map((user) => (
-          <Chat key={user.uid} user={user} />
+          <Chat
+            key={user.uid}
+            user={user}
+            handleSelectUser={handleSelectUser}
+          />
         ))}
-        {/* <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat /> */}
+        <hr className="py-4" />
+        {userChats.map((chats) => (
+          <Chat
+            key={chats[0]}
+            user={chats[1].userInfo}
+            handleSelectUser={handleSelectUser}
+          />
+        ))}
       </div>
     </div>
   );

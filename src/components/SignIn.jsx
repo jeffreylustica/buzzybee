@@ -16,6 +16,7 @@ const SignIn = () => {
       const userAdditionalInfo = await signInWithGoogle();
       if (getAdditionalUserInfo(userAdditionalInfo).isNewUser) {
         addUser(userAdditionalInfo);
+        addUserChats(userAdditionalInfo);
       }
       navigate("/account");
     } catch (error) {
@@ -23,14 +24,22 @@ const SignIn = () => {
     }
   };
 
-  const addUser = async (userAdditionalInfo) => {
+  const addUser = async (userInfo) => {
     try {
-      console.log("here", userAdditionalInfo);
       await setDoc(doc(collection(db, "users")), {
-        uid: userAdditionalInfo.user.uid,
-        displayName: userAdditionalInfo.user.displayName,
-        photoURL: userAdditionalInfo.user.photoURL,
+        uid: userInfo.user.uid,
+        displayName: userInfo.user.displayName,
+        email: userInfo.user.email,
+        photoURL: userInfo.user.photoURL,
       });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addUserChats = async (userInfo) => {
+    try {
+      await setDoc(doc(db, "userChats", userInfo.user.uid), {});
     } catch (error) {
       console.error(error);
     }
