@@ -53,7 +53,7 @@ const ChatsList = ({
         {userChats.map((chats) => (
           <Chat
             key={chats[0]}
-            user={chats[1].userInfo}
+            user={chats[1]}
             handleSelectUser={handleSelectUser}
           />
         ))}

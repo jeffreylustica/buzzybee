@@ -35,7 +35,7 @@ const Search = ({ searchUsers }) => {
       <div className="relative">
         <HiSearch className="absolute w-5 h-5 top-1/2 -translate-y-1/2 ml-3" />
         <input
-          type="text"
+          type="search"
           placeholder="Search"
           className="w-full p-2 rounded-full pl-10"
           onChange={(e) => handleChange(e.target.value)}

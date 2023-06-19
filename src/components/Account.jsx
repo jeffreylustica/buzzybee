@@ -27,7 +27,9 @@ const Account = () => {
   useEffect(() => {
     const getUserChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", user?.uid), (doc) => {
-        setUserChats(Object.entries(doc.data()));
+        setUserChats(
+          Object.entries(doc.data()).sort((a, b) => b[1].date - a[1].date)
+        );
       });
 
       return () => {
@@ -37,8 +39,6 @@ const Account = () => {
 
     user?.uid && getUserChats();
   }, [user]);
-
-  console.log(userChats);
 
   const searchUsers = async (textArr) => {
     try {
@@ -67,19 +67,21 @@ const Account = () => {
 
         //create userChats for current user
         await updateDoc(doc(db, "userChats", user.uid), {
-          [combinedId + ".userInfo"]: {
-            displayName: selectedUser.displayName,
-            photoURL: selectedUser.photoURL,
-            uid: selectedUser.uid,
-          },
+          [combinedId + ".displayName"]: selectedUser.displayName,
+          [combinedId + ".photoURL"]: selectedUser.photoURL,
+          [combinedId + ".uid"]: selectedUser.uid,
+          [combinedId + ".lastMessage"]: "",
+          [combinedId + ".date"]: serverTimestamp(),
+          [combinedId + ".roomId"]: combinedId,
         });
         //create userChats for selected user
         await updateDoc(doc(db, "userChats", selectedUser.uid), {
-          [combinedId + ".userInfo"]: {
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            uid: user.uid,
-          },
+          [combinedId + ".displayName"]: user.displayName,
+          [combinedId + ".photoURL"]: user.photoURL,
+          [combinedId + ".uid"]: user.uid,
+          [combinedId + ".lastMessage"]: "",
+          [combinedId + ".date"]: serverTimestamp(),
+          [combinedId + ".roomId"]: combinedId,
         });
       }
     } catch (error) {
@@ -102,7 +104,11 @@ const Account = () => {
         handleSelectUser={handleSelectUser}
         userChats={userChats}
       />
-      <Rooms setIsActive={setIsActive} selectedUser={selectedUser} />
+      <Rooms
+        setIsActive={setIsActive}
+        selectedUser={selectedUser}
+        userChats={userChats}
+      />
     </div>
   );
 };
