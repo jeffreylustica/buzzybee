@@ -28,7 +28,7 @@ const Account = () => {
     const getUserChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", user?.uid), (doc) => {
         setUserChats(
-          Object.entries(doc.data()).sort((a, b) => b[1].date - a[1].date)
+          Object.entries(doc?.data()).sort((a, b) => b[1].date - a[1].date)
         );
       });
 
@@ -57,7 +57,7 @@ const Account = () => {
       user.uid > selectedUser.uid
         ? user.uid + selectedUser.uid
         : selectedUser.uid + user.uid;
-    getSelectedUserInfo(selectedUser);
+
     try {
       const chatRoom = await getDoc(doc(db, "chatRooms", combinedId));
 
@@ -84,19 +84,19 @@ const Account = () => {
           [combinedId + ".roomId"]: combinedId,
         });
       }
+
+      const selectedUserData = await getDoc(doc(db, "userChats", user.uid));
+      setSelectedUser(selectedUserData.data()[combinedId]);
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const getSelectedUserInfo = (selectedUser) => {
-    setSelectedUser(selectedUser);
   };
 
   return (
     <div className="h-screen flex relative">
       <ChatsList
         isActive={isActive}
+        setIsActive={setIsActive}
         user={user}
         signOutAcct={signOutAcct}
         searchUsers={searchUsers}

@@ -1,17 +1,18 @@
-import { useState } from "react";
 import { HiSearch } from "react-icons/hi";
 
-const Search = ({ searchUsers }) => {
-  const [inputText, setInputText] = useState("");
-
+const Search = ({ searchUsers, setSearchMode, inputText, setInputText }) => {
   const handleChange = (text) => {
     setInputText(text);
+    if (text === "") {
+      setSearchMode(false);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const textArr = generateTextCases(inputText);
     searchUsers(textArr);
+    setSearchMode(true);
   };
 
   const generateTextCases = (text) => {
@@ -37,7 +38,7 @@ const Search = ({ searchUsers }) => {
         <input
           type="search"
           placeholder="Search"
-          className="w-full p-2 rounded-full pl-10"
+          className="w-full p-2 rounded-full pl-10 focus:outline-none focus:bg-gray-100"
           onChange={(e) => handleChange(e.target.value)}
           value={inputText}
         />

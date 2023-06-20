@@ -9,33 +9,40 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    if (!selectedUser?.roomId) {
-      if (userChats[0]?.[0]) {
-        const unsub = onSnapshot(
-          doc(db, "chatRooms", userChats[0]?.[0]),
-          (doc) => {
-            setMessages(doc.data());
-          }
-        );
-        setUserData(userChats[0]?.[1]);
+    const getUserChatsData = () => {
+      const unsub = onSnapshot(
+        doc(db, "chatRooms", userChats[0]?.[0]),
+        (doc) => {
+          setMessages(doc.data());
+        }
+      );
+      setUserData(userChats[0]?.[1]);
 
-        return () => {
-          unsub();
-        };
-      }
-    } else {
+      return () => {
+        unsub();
+      };
+    };
+
+    const getSelectedUserData = () => {
       const unsub = onSnapshot(
         doc(db, "chatRooms", selectedUser?.roomId),
         (doc) => {
           setMessages(doc.data());
         }
       );
-
       setUserData(selectedUser);
 
       return () => {
         unsub();
       };
+    };
+
+    if (!selectedUser?.roomId) {
+      if (userChats[0]?.[0]) {
+        getUserChatsData();
+      }
+    } else {
+      getSelectedUserData();
     }
   }, [selectedUser, userChats]);
 
@@ -49,7 +56,7 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
         >
           <HiOutlineChevronLeft className="w-8 h-8" />
         </button>
-        <div className="flex items-center space-x-4 mr-auto">
+        <div className="flex items-center space-x-4 mr-auto -ml-8">
           <div className="w-12 h-12 mr-auto">
             <ProfileImage user={userData} />
           </div>

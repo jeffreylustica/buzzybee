@@ -3,6 +3,7 @@ import { ProfileImage, Search, Chat, DropdownMenu } from "./index";
 
 const ChatsList = ({
   isActive,
+  setIsActive,
   user,
   signOutAcct,
   searchUsers,
@@ -11,6 +12,8 @@ const ChatsList = ({
   userChats,
 }) => {
   const [dropdownToggle, setDropdownToggle] = useState(false);
+  const [searchMode, setSearchMode] = useState(false);
+  const [inputText, setInputText] = useState("");
 
   const handleToggle = () => {
     setDropdownToggle((prevState) => !prevState);
@@ -40,21 +43,37 @@ const ChatsList = ({
           Chats
         </h1>
       </div>
-      <Search searchUsers={searchUsers} />
+      <Search
+        searchUsers={searchUsers}
+        setSearchMode={setSearchMode}
+        inputText={inputText}
+        setInputText={setInputText}
+      />
       <div className="grow overflow-auto pr-1">
-        {filteredUsers.map((user) => (
-          <Chat
-            key={user.uid}
-            user={user}
-            handleSelectUser={handleSelectUser}
-          />
-        ))}
-        <hr className="py-4" />
+        {searchMode && (
+          <>
+            <div className="mb-2">Search results </div>
+            {filteredUsers.map((user) => (
+              <Chat
+                key={user.uid}
+                user={user}
+                handleSelectUser={handleSelectUser}
+                setIsActive={setIsActive}
+                setSearchMode={setSearchMode}
+                setInputText={setInputText}
+              />
+            ))}
+          </>
+        )}
+        <div className="w-full border-y-2 mb-8"></div>
         {userChats.map((chats) => (
           <Chat
             key={chats[0]}
             user={chats[1]}
             handleSelectUser={handleSelectUser}
+            setIsActive={setIsActive}
+            setSearchMode={setSearchMode}
+            setInputText={setInputText}
           />
         ))}
       </div>

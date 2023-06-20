@@ -27,6 +27,7 @@ const TypeBox = ({ userData }) => {
         messages: arrayUnion({
           text: message,
           senderId: user.uid,
+          photoURL: user.photoURL,
           date: Timestamp.now(),
         }),
       });
@@ -56,7 +57,7 @@ const TypeBox = ({ userData }) => {
       <input
         type="text"
         placeholder="Message"
-        className="bg-gray-100 shadow-gray-400 shadow-sm rounded-sm p-2 grow focus:outline-none focus:bg-gray-200"
+        className="bg-gray-200 shadow-gray-400 shadow-sm rounded-sm p-2 grow focus:outline-none focus:bg-gray-300"
         onChange={(e) => setMessage(e.target.value)}
         value={message}
       />

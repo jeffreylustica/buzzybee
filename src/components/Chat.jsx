@@ -1,10 +1,23 @@
 import { ProfileImage } from "./index";
 
-const Chat = ({ user, handleSelectUser }) => {
+const Chat = ({
+  user,
+  handleSelectUser,
+  setIsActive,
+  setSearchMode,
+  setInputText,
+}) => {
+  const handleSelect = (user) => {
+    handleSelectUser(user);
+    setIsActive(true);
+    setSearchMode(false);
+    setInputText("");
+  };
+
   return (
     <div
       className="flex items-center bg-white rounded-md mb-2 p-2 transition-all hover:bg-gray-100 cursor-pointer"
-      onClick={() => handleSelectUser(user)}
+      onClick={() => handleSelect(user)}
     >
       <div className="min-w-max w-10 h-10 mr-4">
         <ProfileImage user={user} />
