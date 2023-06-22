@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { HiOutlineChevronLeft } from "react-icons/hi";
 import { ProfileImage, Messages, TypeBox } from "./index";
 import { doc, onSnapshot } from "firebase/firestore";
@@ -7,6 +7,7 @@ import { db } from "../firebase";
 const Rooms = ({ setIsActive, selectedUser, userChats }) => {
   const [messages, setMessages] = useState([]);
   const [userData, setUserData] = useState({});
+  const dummyRef = useRef();
 
   useEffect(() => {
     const getUserChatsData = () => {
@@ -46,9 +47,13 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
     }
   }, [selectedUser, userChats]);
 
+  useEffect(() => {
+    dummyRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
-    <div className="w-full h-full p-4 flex flex-col justify-between">
-      <div className="flex items-center pb-4 mb-2">
+    <div className="w-full h-full flex flex-col justify-between">
+      <div className="flex items-center p-4">
         <button
           type="button"
           className="mr-auto rounded-full hover:bg-gray-100 transition-all sm:scale-0"
@@ -63,7 +68,7 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
           <span className="text-lg font-bold">{userData.displayName}</span>
         </div>
       </div>
-      <Messages messages={messages} />
+      <Messages messages={messages} ref={dummyRef} />
       <TypeBox userData={userData} />
     </div>
   );

@@ -16,7 +16,7 @@ const TypeBox = ({ userData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    updateMessages();
+    message && updateMessages();
     updateUserChatsLatestMessage();
     setMessage("");
   };
@@ -53,7 +53,7 @@ const TypeBox = ({ userData }) => {
   };
 
   return (
-    <form className="flex items-center" onSubmit={handleSubmit}>
+    <form className="flex items-center p-2" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Message"
