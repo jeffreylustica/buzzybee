@@ -32,7 +32,7 @@ const Search = ({ searchUsers, setSearchMode, inputText, setInputText }) => {
   };
 
   return (
-    <form className="mb-10" onSubmit={handleSubmit}>
+    <form className="p-4 mb-6" onSubmit={handleSubmit}>
       <div className="relative">
         <HiSearch className="absolute w-5 h-5 top-1/2 -translate-y-1/2 ml-3" />
         <input

@@ -29,8 +29,8 @@ const MessageBubble = ({ message }) => {
 
   const bubbleClass =
     user.uid === message.senderId
-      ? "bg-gold ml-auto order-1"
-      : "bg-gray-200 mr-auto order-2";
+      ? "bg-gold ml-auto order-1 origin-bottom-right animate-scaleUp"
+      : "bg-gray-200 mr-auto order-2 origin-bottom-left animate-scaleUp";
 
   return (
     <div onClick={handleToggle}>
@@ -39,7 +39,7 @@ const MessageBubble = ({ message }) => {
       )}
       <div className="flex justify-center items-end mb-6">
         <div
-          className={`max-w-[260px] sm:max-w-[280px] md:max-w-[380px] lg:max-w-[500px] xl:max-w-[570px] w-max ${bubbleClass} rounded-lg px-4 py-2 shadow-sm shadow-gray-400`}
+          className={`max-w-[260px] sm:max-w-[250px] md:max-w-[380px] lg:max-w-[500px] xl:max-w-[570px] w-max ${bubbleClass} rounded-sm px-4 py-2 shadow-sm shadow-gray-400`}
         >
           {message.text}
         </div>

@@ -53,11 +53,14 @@ const TypeBox = ({ userData }) => {
   };
 
   return (
-    <form className="flex items-center p-2" onSubmit={handleSubmit}>
+    <form
+      className="flex items-center p-2 shadow-[0_-6px_5px_-5px_rgba(0,0,0,0.3)]"
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         placeholder="Message"
-        className="bg-gray-200 shadow-gray-400 shadow-sm rounded-sm p-2 grow focus:outline-none focus:bg-gray-300"
+        className="bg-gray-200 shadow-gray-400 shadow-sm rounded-sm p-2 grow focus:outline-none focus:bg-gold-100"
         onChange={(e) => setMessage(e.target.value)}
         value={message}
       />

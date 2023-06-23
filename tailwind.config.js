@@ -8,21 +8,21 @@ export default {
       },
       colors: {
         gold: "#FBBF24",
+        "gold-100": "#FEF3C7",
+        "gold-200": "#FDE68A",
+        "gold-300": "#FCD34D",
+        "gold-400": "#FBBF24",
+        "gold-500": "#F59E0B",
+        "gold-600": "#D97706",
+        "gold-700": "#B45309",
+        "gold-800": "#92400E",
         "gold-900": "#78350F",
       },
       animation: {
-        scaleUpBr:
-          "scaleUpBr 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both",
-        scaleUpBl:
-          "scaleUpBl 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both",
+        scaleUp: "scaleUp 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both",
       },
       keyframes: {
-        scaleUpBr: {
-          "0%": { transform: "scale(0)" },
-          "80%": { transform: "scale(1.1)" },
-          "100%": { transform: "scale(1)" },
-        },
-        scaleUpBl: {
+        scaleUp: {
           "0%": { transform: "scale(0)" },
           "80%": { transform: "scale(1.1)" },
           "100%": { transform: "scale(1)" },

@@ -13,7 +13,7 @@ const DropdownMenu = ({ user, signOutAcct }) => {
   };
 
   return (
-    <div className="min-w-[250px] bg-gray-100 rounded-sm divide-y-2 divide-solid divide-gray-200 border-solid border-2">
+    <div className="min-w-[250px] bg-white rounded-sm divide-y-2 divide-solid divide-gray-200 border-solid border-2">
       <div className="px-4 py-2">
         <span>Signed in as</span>
         <div>{user?.displayName}</div>
@@ -21,7 +21,7 @@ const DropdownMenu = ({ user, signOutAcct }) => {
       <div className="py-2">
         <button
           type="button"
-          className="w-full text-left px-4 py-2 hover:bg-gray-300 flex items-center gap-1"
+          className="w-full text-left px-4 py-2 hover:bg-gold-200 flex items-center gap-1"
           onClick={handleSignout}
         >
           <HiOutlineLogout />

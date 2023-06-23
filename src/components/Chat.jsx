@@ -16,7 +16,7 @@ const Chat = ({
 
   return (
     <div
-      className="flex items-center bg-white rounded-md mb-2 p-2 transition-all hover:bg-gray-100 cursor-pointer"
+      className="flex items-center bg-white border-b-2 border-r-2 border-gray-100 px-4 py-2 transition-all hover:bg-gold-100 hover:scale-105 origin-left cursor-pointer"
       onClick={() => handleSelect(user)}
     >
       <div className="min-w-max w-10 h-10 mr-4">

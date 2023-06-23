@@ -1,4 +1,4 @@
-import reactLogo from "../assets/reactLogo.svg";
+import { appLogo } from "../assets/";
 import { FcGoogle } from "react-icons/fc";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -46,15 +46,15 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
-      <img src={reactLogo} className="h-40 mb-6 mt-auto" alt="brand-logo" />
-      <h1 className="font-bold text-xl text-gold-900">Buzzybee</h1>
+    <div className="min-h-screen flex flex-col justify-center items-center bg-[url('./assets/waveBg.svg')] bg-no-repeat bg-bottom w-full">
+      <img src={appLogo} className="h-40 mb-4" alt="brand-logo" />
+      <h1 className="font-bold text-xl mb-20">Buzzybee</h1>
       <button
         onClick={() => signIn()}
         type="button"
-        className="flex items-center justify-self-end space-x-4 rounded-sm py-2 px-6 mt-auto mb-16 bg-gray-100 shadow-md shadow-gray-300 transition-all hover:-translate-y-1 hover:bg-yellow-300 hover:shadow-gray-400"
+        className="flex items-center space-x-4 rounded-sm py-2 px-6 bg-white shadow-sm shadow-gray-300 border-2 border-gray-100 transition-all hover:-translate-y-1 focus:-translate-y-1 focus:bg-yellow-300 hover:bg-yellow-200 hover:shadow-gray-400 focus:shadow-gray-400"
       >
-        <FcGoogle /> <span>Sign in with Google</span>
+        <FcGoogle className="w-6 h-6" /> <span>Sign in with Google</span>
       </button>
     </div>
   );

@@ -53,7 +53,7 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
 
   return (
     <div className="w-full h-full flex flex-col justify-between">
-      <div className="flex items-center p-4">
+      <div className="flex items-center p-4 shadow-md">
         <button
           type="button"
           className="mr-auto rounded-full hover:bg-gray-100 transition-all sm:scale-0"
