@@ -24,7 +24,7 @@ const ChatsList = ({
     <div
       className={`absolute sm:relative z-10 ${
         isActive ? "-translate-x-full sm:-translate-x-0" : "-translate-x-0"
-      } sm:min-w-[320px] sm:max-w-[30vw] transition-all w-full h-full bg-gold flex flex-col`}
+      } sm:min-w-[320px] sm:max-w-[25vw] transition-all w-full h-full bg-gold flex flex-col`}
     >
       <div className="flex items-center relative p-4">
         <div

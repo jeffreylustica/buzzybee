@@ -46,7 +46,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-[url('./assets/waveBg.svg')] bg-no-repeat bg-bottom w-full">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-[url('./assets/waveBg.svg')] bg-no-repeat bg-bottom bg-[length:1700px]">
       <img src={appLogo} className="h-40 mb-4" alt="brand-logo" />
       <h1 className="font-bold text-xl mb-20">Buzzybee</h1>
       <button
