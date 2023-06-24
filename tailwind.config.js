@@ -20,12 +20,27 @@ export default {
       },
       animation: {
         scaleUp: "scaleUp 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both",
+        ldsBee1: "ldsBee1 0.6s infinite",
+        ldsBee2: "ldsBee2 0.6s infinite",
+        ldsBee3: "ldsBee3 0.6s infinite",
       },
       keyframes: {
         scaleUp: {
           "0%": { transform: "scale(0)" },
           "80%": { transform: "scale(1.1)" },
           "100%": { transform: "scale(1)" },
+        },
+        ldsBee1: {
+          "0%": { transform: "scale(0)" },
+          "100%": { transform: "scale(1)" },
+        },
+        ldsBee3: {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(0)" },
+        },
+        ldsBee2: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(48px, 0)" },
         },
       },
     },

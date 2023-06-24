@@ -8,8 +8,10 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
   const [messages, setMessages] = useState([]);
   const [userData, setUserData] = useState({});
   const dummyRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const getUserChatsData = () => {
       const unsub = onSnapshot(
         doc(db, "chatRooms", userChats[0]?.[0]),
@@ -18,6 +20,7 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
         }
       );
       setUserData(userChats[0]?.[1]);
+      setIsLoading(false);
 
       return () => {
         unsub();
@@ -32,6 +35,7 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
         }
       );
       setUserData(selectedUser);
+      setIsLoading(false);
 
       return () => {
         unsub();
@@ -45,6 +49,8 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
     } else {
       getSelectedUserData();
     }
+
+    dummyRef.current.scrollIntoView({ behavior: "smooth" });
   }, [selectedUser, userChats]);
 
   useEffect(() => {
@@ -68,7 +74,7 @@ const Rooms = ({ setIsActive, selectedUser, userChats }) => {
           <span className="text-lg font-bold">{userData.displayName}</span>
         </div>
       </div>
-      <Messages messages={messages} ref={dummyRef} />
+      <Messages messages={messages} ref={dummyRef} isLoading={isLoading} />
       <TypeBox userData={userData} />
     </div>
   );

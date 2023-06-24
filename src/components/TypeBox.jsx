@@ -66,7 +66,7 @@ const TypeBox = ({ userData }) => {
       />
       <button
         type="submit"
-        className="p-4 text-gold transition-all hover:text-gold-900"
+        className="py-4 mx-4 text-gold rotate-45 transition-all hover:text-gold-900"
       >
         <HiPaperAirplane className="w-8 h-8" />
       </button>

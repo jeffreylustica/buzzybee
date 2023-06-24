@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProfileImage, Search, Chat, DropdownMenu } from "./index";
+import { ProfileImage, Search, Chat, DropdownMenu, Loader } from "./index";
 
 const ChatsList = ({
   isActive,
@@ -10,6 +10,7 @@ const ChatsList = ({
   filteredUsers,
   handleSelectUser,
   userChats,
+  isLoading,
 }) => {
   const [dropdownToggle, setDropdownToggle] = useState(false);
   const [searchMode, setSearchMode] = useState(false);
@@ -64,86 +65,20 @@ const ChatsList = ({
             <div className="border-b-2 mb-4 mt-8 border-gray-200"></div>
           </>
         )}
-        {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))}
-        {/* {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))}
-        {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))}
-        {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))}
-        {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))}
-        {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))}
-        {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))}
-        {userChats.map((chats) => (
-          <Chat
-            key={chats[0]}
-            user={chats[1]}
-            handleSelectUser={handleSelectUser}
-            setIsActive={setIsActive}
-            setSearchMode={setSearchMode}
-            setInputText={setInputText}
-          />
-        ))} */}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          userChats.map((chats) => (
+            <Chat
+              key={chats[0]}
+              user={chats[1]}
+              handleSelectUser={handleSelectUser}
+              setIsActive={setIsActive}
+              setSearchMode={setSearchMode}
+              setInputText={setInputText}
+            />
+          ))
+        )}
       </div>
     </div>
   );

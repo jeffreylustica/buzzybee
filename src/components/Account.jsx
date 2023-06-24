@@ -21,15 +21,18 @@ const Account = () => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [userChats, setUserChats] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const usersRef = collection(db, "users");
 
   useEffect(() => {
+    setIsLoading(true);
     const getUserChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", user?.uid), (doc) => {
         setUserChats(
           Object.entries(doc?.data()).sort((a, b) => b[1].date - a[1].date)
         );
+        setIsLoading(false);
       });
 
       return () => {
@@ -103,6 +106,7 @@ const Account = () => {
         filteredUsers={filteredUsers}
         handleSelectUser={handleSelectUser}
         userChats={userChats}
+        isLoading={isLoading}
       />
       <Rooms
         setIsActive={setIsActive}
