@@ -10,9 +10,11 @@ const Search = ({ searchUsers, setSearchMode, inputText, setInputText }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const textArr = generateTextCases(inputText);
-    searchUsers(textArr);
-    setSearchMode(true);
+    if (inputText !== "") {
+      const textArr = generateTextCases(inputText);
+      searchUsers(textArr);
+      setSearchMode(true);
+    }
   };
 
   const generateTextCases = (text) => {

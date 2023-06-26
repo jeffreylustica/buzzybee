@@ -52,16 +52,22 @@ const ChatsList = ({
         {searchMode && (
           <>
             <div className="mb-2">Search results: </div>
-            {filteredUsers.map((user) => (
-              <Chat
-                key={user.uid}
-                user={user}
-                handleSelectUser={handleSelectUser}
-                setIsActive={setIsActive}
-                setSearchMode={setSearchMode}
-                setInputText={setInputText}
-              />
-            ))}
+            {isLoading ? (
+              <Loader />
+            ) : filteredUsers.length === 0 ? (
+              <p className="text-center font-bold">No results found</p>
+            ) : (
+              filteredUsers.map((user) => (
+                <Chat
+                  key={user.uid}
+                  user={user}
+                  handleSelectUser={handleSelectUser}
+                  setIsActive={setIsActive}
+                  setSearchMode={setSearchMode}
+                  setInputText={setInputText}
+                />
+              ))
+            )}
             <div className="border-b-2 mb-4 mt-8 border-gray-200"></div>
           </>
         )}

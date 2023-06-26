@@ -16,9 +16,11 @@ const TypeBox = ({ userData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    message && updateMessages();
-    updateUserChatsLatestMessage();
-    setMessage("");
+    if (message) {
+      updateMessages();
+      updateUserChatsLatestMessage();
+      setMessage("");
+    }
   };
 
   const updateMessages = async () => {
