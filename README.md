@@ -11,5 +11,6 @@ This project is a real-time chat application built using the following web techn
 
 ## How to use the app
 1. Visit this link - https://buzzybee-chatapp.netlify.app/
-2. Login using your google account.
-3. And you are good to go.
+2. Login using your google account
+3. Seach for other users using search box
+4. You can now start chatting with other users
