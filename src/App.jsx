@@ -5,7 +5,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <div className="font-body box-border">
+    <div className="font-body box-border bg-gray-50">
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<SignIn />} />

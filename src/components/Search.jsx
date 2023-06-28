@@ -40,7 +40,7 @@ const Search = ({ searchUsers, setSearchMode, inputText, setInputText }) => {
         <input
           type="search"
           placeholder="Search"
-          className="w-full p-2 rounded-full pl-10 focus:outline-none focus:bg-gray-100"
+          className="w-full p-2 bg-gray-50 rounded-full pl-10 focus:outline-none focus:bg-gray-100"
           onChange={(e) => handleChange(e.target.value)}
           value={inputText}
         />
