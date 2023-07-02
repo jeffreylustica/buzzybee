@@ -96,7 +96,7 @@ const Account = () => {
   };
 
   return (
-    <div className="h-screen sm:h-screen-small flex relative">
+    <div className="h-screen-small sm:h-screen  flex relative">
       <ChatsList
         isActive={isActive}
         setIsActive={setIsActive}
