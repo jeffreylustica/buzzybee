@@ -1,3 +1,7 @@
+import { useState, useRef } from "react";
+import { HiPaperAirplane } from "react-icons/hi";
+import { db } from "../firebase";
+import { UserAuth } from "../context/AuthContext";
 import {
   Timestamp,
   arrayUnion,
@@ -5,13 +9,11 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import { useState } from "react";
-import { HiPaperAirplane } from "react-icons/hi";
-import { db } from "../firebase";
-import { UserAuth } from "../context/AuthContext";
+
 const TypeBox = ({ userData }) => {
   const [message, setMessage] = useState("");
   const { user } = UserAuth();
+  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const TypeBox = ({ userData }) => {
       updateMessages();
       updateUserChatsLatestMessage();
       setMessage("");
+      inputRef.current.focus();
     }
   };
 
@@ -60,6 +63,7 @@ const TypeBox = ({ userData }) => {
       onSubmit={handleSubmit}
     >
       <input
+        ref={inputRef}
         type="text"
         placeholder="Message"
         className="bg-gray-200 shadow-gray-400 shadow-sm rounded-sm p-2 grow focus:outline-none focus:bg-gold-100"
