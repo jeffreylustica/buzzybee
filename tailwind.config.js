@@ -18,6 +18,9 @@ export default {
         "gold-800": "#92400E",
         "gold-900": "#78350F",
       },
+      height: {
+        "screen-small": "100svh",
+      },
       animation: {
         scaleUp: "scaleUp 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both",
         ldsBee1: "ldsBee1 0.6s infinite",
